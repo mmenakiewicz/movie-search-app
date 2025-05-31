@@ -8,7 +8,7 @@ const SearchPage = () => {
   const debouncedSearchQuery = useDebounce(searchQuery)
 
   return (
-    <div className="App">
+    <div>
       <SearchBar onSearch={setSearchQuery} />
       <main>
         <SearchResults searchQuery={debouncedSearchQuery} />

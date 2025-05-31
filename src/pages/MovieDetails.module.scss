@@ -1,0 +1,169 @@
+@use "/src/styles/_variables.scss" as *;
+
+.backButton {
+  position: absolute;
+  border: 2px solid white;
+  display: flex;
+  align-items: center;
+  gap: $spacing;
+  border-radius: 32px;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: $spacing;
+  top: 16px;
+  left: 8px;
+  z-index: 2;
+  font-size: 1.5rem;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-color: $primary-color;
+    color: $primary-color;
+  }
+}
+
+.loaderWrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.movieCard {
+  padding: 40px 0;
+}
+
+.container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 780px;
+  min-height: 574px;
+  background: #ffffff;
+  border-radius: 5px;
+  position: relative;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.hero {
+  height: 342px;
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.hero {
+  & > .heroBg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    background-color: #bbb;
+    background-size: cover;
+    z-index: -1;
+
+    transform: skewY(-2.2deg);
+    transform-origin: 0 0;
+
+    //chrome antialias fix
+    -webkit-backface-visibility: hidden;
+
+    &:before {
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.8) 80%,
+        rgba(0, 0, 0, 1) 100%
+      );
+      z-index: -1;
+    }
+  }
+}
+
+.cover {
+  position: absolute;
+  width: 200px;
+  aspect-ratio: 2/3;
+  top: 160px;
+  left: 40px;
+  z-index: 2;
+}
+
+.details {
+  padding: 190px 0 0 280px;
+
+  .title1 {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: $spacing;
+    position: relative;
+    max-height: 95px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .metaContainer {
+    display: flex;
+    align-items: center;
+    gap: $spacing;
+  }
+
+  .metaInfo {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: white;
+    font-weight: 600;
+    margin-bottom: $spacing;
+  }
+}
+
+.description {
+  padding: $spacing * 2 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing * 3;
+  bottom: 0px;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.column1 {
+  padding-left: 38px;
+  padding-top: 120px;
+  flex-basis: 220px;
+  text-align: center;
+}
+
+.genres {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  background: $body-bg-color;
+  border-radius: 10px;
+  padding: 3px 8px;
+  font-size: 14px;
+}
+
+.column2 {
+  flex-grow: 1;
+  flex-basis: 400px;
+  padding: $spacing;
+}

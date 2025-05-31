@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
-import type { SearchMoviesResponse } from "@/types/moviesTypes"
+import type { MovieDetails, SearchMoviesResponse } from "@/types/moviesTypes"
 
 export const moviesApi = createApi({
   reducerPath: "moviesApi",
@@ -15,7 +15,10 @@ export const moviesApi = createApi({
       query: ({ query }) =>
         `search/movie?query=${encodeURIComponent(query)}&include_adult=false&language=en-US`,
     }),
+    getMovieDetails: builder.query<MovieDetails, { id: string }>({
+      query: ({ id }) => `movie/${id}?language=en-US`,
+    }),
   }),
 })
 
-export const { useLazySearchMoviesQuery } = moviesApi
+export const { useLazySearchMoviesQuery, useGetMovieDetailsQuery } = moviesApi
