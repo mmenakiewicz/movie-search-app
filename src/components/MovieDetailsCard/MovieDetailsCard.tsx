@@ -1,4 +1,5 @@
-import { Link } from "react-router"
+/* eslint-disable @typescript-eslint/no-misused-promises */
+import { useNavigate } from "react-router"
 import { CircleArrowLeft, Calendar, Star } from "lucide-react"
 import { getFullImageUrl } from "@/utils/helpers"
 import Loader from "@/components/Loader/Loader"
@@ -11,13 +12,23 @@ interface MovieDetailsCardProps {
 }
 
 export const MovieDetailsCard = ({ movieDetails }: MovieDetailsCardProps) => {
+  const navigate = useNavigate()
+
+  const handleBackClick = async () => {
+    if (window.history.length > 1) {
+      await navigate(-1)
+    } else {
+      await navigate("/", { replace: true })
+    }
+  }
+
   return (
     <div>
       <div className={styles.movieCard}>
         <div className={styles.container}>
-          <Link to="/" className={styles.backButton}>
+          <button onClick={handleBackClick} className={styles.backButton}>
             <CircleArrowLeft /> Back
-          </Link>
+          </button>
           {!movieDetails ? (
             <div className={styles.loaderWrapper}>
               <Loader />

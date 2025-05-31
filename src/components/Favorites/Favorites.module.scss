@@ -1,0 +1,25 @@
+@use "/src/styles/_variables.scss" as *;
+
+.container {
+  max-width: $main-width;
+  margin: $spacing * 2 auto;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: $spacing;
+  padding: $spacing 0;
+  z-index: 2;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: $hover-text-color;
+  }
+}
+
+.heading {
+  margin-bottom: $spacing;
+  font-size: 2.5rem;
+  font-weight: bold;
+}

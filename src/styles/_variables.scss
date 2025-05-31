@@ -3,6 +3,8 @@
 $main-width: 1200px;
 
 $main-text-color: #333;
+$hover-text-color: color.adjust($main-text-color, $lightness: 30%);
+
 $placeholder-text-color: #666;
 $body-bg-color: #f1f1f1;
 $card-bg-color: color.adjust($body-bg-color, $lightness: 10%);

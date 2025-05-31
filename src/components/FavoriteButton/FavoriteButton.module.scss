@@ -1,0 +1,33 @@
+@use "/src/styles/_variables.scss" as *;
+
+.button {
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid white;
+  cursor: pointer;
+  padding: calc($spacing / 2);
+  transition: transform 0.2s;
+
+  &:hover {
+    border-color: $primary-color;
+    background: rgba(0, 0, 0, 0.8);
+    color: $primary-color;
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+
+  &.active {
+    border-color: $primary-color;
+    color: $primary-color;
+
+    svg {
+      fill: $primary-color;
+    }
+  }
+}

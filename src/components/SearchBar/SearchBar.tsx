@@ -3,6 +3,8 @@ import type { ChangeEvent } from "react"
 import { useState } from "react"
 import styles from "./SearchBar.module.scss"
 import { Search } from "lucide-react"
+import { Link } from "react-router"
+import { Heart } from "lucide-react"
 
 interface SearchInputProps {
   placeholder?: string
@@ -24,16 +26,22 @@ const SearchInput: React.FC<SearchInputProps> = ({
 
   return (
     <header className={styles.container}>
-      <div className={styles.inputWrapper}>
-        <Search size={16} className={styles.searchIcon} />
-        <input
-          type="search"
-          value={value}
-          onChange={handleChange}
-          placeholder={placeholder}
-          aria-label="Search"
-          className={styles.input}
-        />
+      <div className={styles.innerContainer}>
+        <div className={styles.inputWrapper}>
+          <Search size={16} className={styles.searchIcon} />
+          <input
+            type="search"
+            value={value}
+            onChange={handleChange}
+            placeholder={placeholder}
+            aria-label="Search"
+            className={styles.input}
+          />
+        </div>
+        <Link to="/favorites" className={styles.favoritesLink}>
+          <Heart size={24} />
+          My Favorites
+        </Link>
       </div>
     </header>
   )

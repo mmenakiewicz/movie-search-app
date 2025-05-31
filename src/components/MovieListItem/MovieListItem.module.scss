@@ -1,6 +1,7 @@
 @use "/src/styles/_variables.scss" as *;
 
 .container {
+  position: relative;
   border-radius: $border-radius;
   background-color: $card-bg-color;
   overflow: hidden;
@@ -10,6 +11,13 @@
   &:hover {
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
   }
+}
+
+.favoriteButton {
+  position: absolute;
+  top: $spacing;
+  left: $spacing;
+  z-index: 3;
 }
 
 .title {

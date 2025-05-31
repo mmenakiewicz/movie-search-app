@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router"
 import SearchPage from "@/pages/SearchPage"
-import MovieDetailsPage from "./pages/MovieDetailsPage"
+import MovieDetailsPage from "@/pages/MovieDetailsPage"
+import { FavoritesPage } from "@/pages/FavoritesPage"
 
 export const RootComponent = () => {
   return (
@@ -8,6 +9,7 @@ export const RootComponent = () => {
       <Routes>
         <Route path="/" element={<SearchPage />} />
         <Route path="/movies/:id" element={<MovieDetailsPage />} />
+        <Route path="/favorites" element={<FavoritesPage />} />
       </Routes>
     </BrowserRouter>
   )

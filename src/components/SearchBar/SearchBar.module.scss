@@ -4,11 +4,19 @@
 .container {
   position: sticky;
   top: 0;
+  z-index: 10;
+  background-color: $body-bg-color;
   display: flex;
   justify-content: center;
+}
+
+.innerContainer {
+  width: 100%;
+  max-width: $main-width;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  background-color: $body-bg-color;
-  padding: 2 * $spacing $spacing $spacing;
+  padding: 2 * $spacing 0 $spacing;
 }
 
 .inputWrapper {
@@ -46,4 +54,24 @@
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
+}
+
+.favoritesLink {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  color: inherit;
+  padding: $spacing;
+  transition: background-color 0.3s ease;
+  border-radius: $border-radius;
+
+  &:hover,
+  &:focus {
+    color: $hover-text-color;
+  }
+
+  &:focus {
+    border: 2px solid $primary-color;
+  }
 }

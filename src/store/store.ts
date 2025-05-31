@@ -1,9 +1,10 @@
-import { moviesApi } from "@/store/moviesApiSlice"
 import type { Action, ThunkAction } from "@reduxjs/toolkit"
 import { combineSlices, configureStore } from "@reduxjs/toolkit"
 import { setupListeners } from "@reduxjs/toolkit/query"
+import { moviesApi } from "@/store/moviesApiSlice"
+import { favoritesSlice } from "@/store/favoritesSlice"
 
-const rootReducer = combineSlices(moviesApi)
+const rootReducer = combineSlices(moviesApi, favoritesSlice)
 
 export type RootState = ReturnType<typeof rootReducer>
 
