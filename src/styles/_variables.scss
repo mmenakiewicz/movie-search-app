@@ -1,0 +1,15 @@
+@use "sass:color";
+
+$main-width: 1200px;
+
+$main-text-color: #333;
+$placeholder-text-color: #666;
+$body-bg-color: #f1f1f1;
+$card-bg-color: color.adjust($body-bg-color, $lightness: 10%);
+$primary-color: #ffd000;
+
+$border-color: color.adjust($main-text-color, $lightness: 60%);
+$border-radius: 8px;
+
+$font-size-base: 16px;
+$spacing: 16px;

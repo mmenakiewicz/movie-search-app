@@ -1,0 +1,18 @@
+@use "/src/styles/_variables.scss" as *;
+
+.container {
+  max-width: $main-width;
+  margin: $spacing * 2 auto;
+}
+
+.resultsHeader {
+  margin-bottom: $spacing;
+}
+
+.loaderWrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}

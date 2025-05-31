@@ -1,9 +1,14 @@
-export const App = () => (
-  <div className="App">
-    <header>
-      <h1>
-        Movie search app
-      </h1>
-    </header>
-  </div>
-)
+import { StrictMode } from "react"
+import { Provider } from "react-redux"
+import { RootComponent } from "./RootComponent"
+import { store } from "./store/store"
+
+export const App = () => {
+  return (
+    <StrictMode>
+      <Provider store={store}>
+        <RootComponent />
+      </Provider>
+    </StrictMode>
+  )
+}

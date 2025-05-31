@@ -1,0 +1,49 @@
+@use "sass:color";
+@use "/src/styles/_variables.scss" as *;
+
+.container {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $body-bg-color;
+  padding: 2 * $spacing $spacing $spacing;
+}
+
+.inputWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 850px;
+}
+
+.input {
+  width: 100%;
+  max-width: 850px;
+  padding: $spacing 2 * $spacing $spacing 3 * $spacing;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  font-size: 1.3rem;
+  background-color: color.adjust($body-bg-color, $lightness: 5%);
+  color: $main-text-color;
+  transition: border-color 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+  &::placeholder {
+    color: $main-text-color;
+    opacity: 0.8;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $primary-color;
+  }
+}
+
+.searchIcon {
+  position: absolute;
+  left: $spacing;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}

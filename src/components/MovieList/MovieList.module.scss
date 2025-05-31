@@ -1,0 +1,20 @@
+@use "sass:color";
+@use "/src/styles/_variables.scss" as *;
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(220px, calc(25% - $spacing * 2))
+  );
+  gap: $spacing * 2;
+}
+
+.noResults {
+  background-color: color.adjust($body-bg-color, $lightness: -5%);
+  border-radius: $border-radius;
+  text-align: center;
+  padding: $spacing * 4;
+  font-size: 1.2rem;
+  color: $placeholder-text-color;
+}

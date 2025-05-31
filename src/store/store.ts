@@ -1,4 +1,4 @@
-import { moviesApi } from "@/features/movies/moviesApiSlice"
+import { moviesApi } from "@/store/moviesApiSlice"
 import type { Action, ThunkAction } from "@reduxjs/toolkit"
 import { combineSlices, configureStore } from "@reduxjs/toolkit"
 import { setupListeners } from "@reduxjs/toolkit/query"
@@ -13,7 +13,8 @@ export const makeStore = (preloadedState?: Partial<RootState>) => {
   const store = configureStore({
     reducer: rootReducer,
     preloadedState,
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(moviesApi.middleware),
+    middleware: getDefaultMiddleware =>
+      getDefaultMiddleware().concat(moviesApi.middleware),
   })
   // configure listeners using the provided defaults
   // optional, but required for `refetchOnFocus`/`refetchOnReconnect` behaviors
@@ -22,7 +23,6 @@ export const makeStore = (preloadedState?: Partial<RootState>) => {
 }
 
 export const store = makeStore()
-
 
 export type AppStore = typeof store
 export type AppDispatch = AppStore["dispatch"]
