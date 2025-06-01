@@ -1,13 +1,13 @@
 import type React from "react"
 import type { ChangeEvent } from "react"
 import { useEffect, useState } from "react"
-import styles from "./SearchBar.module.scss"
 import { Search } from "lucide-react"
 import { Link } from "react-router"
 import { Heart } from "lucide-react"
 import { useAppDispatch, useAppSelector } from "@/store/hooks"
 import { selectSearchQuery, setSearchQuery } from "@/store/searchSlice"
 import { useDebounce } from "@/utils/useDebounce"
+import styles from "./SearchBar.module.scss"
 
 interface SearchInputProps {
   placeholder?: string

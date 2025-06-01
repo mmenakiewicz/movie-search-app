@@ -63,8 +63,8 @@
   text-decoration: none;
   color: inherit;
   padding: $spacing;
-  transition: background-color 0.3s ease;
   border-radius: $border-radius;
+  transition: all 0.3s ease;
 
   &:hover,
   &:focus {

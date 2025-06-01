@@ -34,3 +34,20 @@ code {
   font-family:
     source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+
+main {
+  position: relative;
+  max-width: $main-width;
+  margin: $spacing * 2 auto;
+}
+
+.error {
+  color: $error-color;
+  background-color: $error-bg-color;
+  padding: $spacing;
+  border-radius: $border-radius;
+  font-size: $font-size-base;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

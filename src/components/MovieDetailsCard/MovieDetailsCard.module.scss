@@ -1,29 +1,5 @@
 @use "/src/styles/_variables.scss" as *;
 
-.backButton {
-  position: absolute;
-  border: 2px solid white;
-  display: flex;
-  align-items: center;
-  gap: $spacing;
-  border-radius: 32px;
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: $spacing;
-  top: 16px;
-  left: 8px;
-  z-index: 2;
-  font-size: 1.5rem;
-  color: #ffffff;
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-    border-color: $primary-color;
-    color: $primary-color;
-  }
-}
-
 .loaderWrapper {
   display: flex;
   width: 100%;
@@ -44,6 +20,9 @@
   background: #ffffff;
   border-radius: 5px;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 

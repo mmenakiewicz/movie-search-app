@@ -9,6 +9,8 @@ $placeholder-text-color: #666;
 $body-bg-color: #f1f1f1;
 $card-bg-color: color.adjust($body-bg-color, $lightness: 10%);
 $primary-color: #ffd000;
+$error-color: #ff4d4d;
+$error-bg-color: #ffdddd;
 
 $border-color: color.adjust($main-text-color, $lightness: 60%);
 $border-radius: 8px;

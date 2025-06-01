@@ -1,41 +1,49 @@
-/* eslint-disable @typescript-eslint/no-misused-promises */
-import { useNavigate } from "react-router"
-import { CircleArrowLeft, Calendar, Star } from "lucide-react"
+import { Calendar, Star } from "lucide-react"
+import { useGetMovieDetailsQuery } from "@/store/moviesApiSlice"
 import { getFullImageUrl } from "@/utils/helpers"
 import Loader from "@/components/Loader/Loader"
 import { PosterPlaceholder } from "@/components/PosterPlaceholder/PosterPlaceholder"
-import type { MovieDetails } from "@/types/moviesTypes"
 import styles from "./MovieDetailsCard.module.scss"
 
 interface MovieDetailsCardProps {
-  movieDetails?: MovieDetails
+  movieId?: string
 }
 
-export const MovieDetailsCard = ({ movieDetails }: MovieDetailsCardProps) => {
-  const navigate = useNavigate()
+export const MovieDetailsCard = ({ movieId = "" }: MovieDetailsCardProps) => {
+  const {
+    data: movieDetails,
+    isFetching,
+    error,
+  } = useGetMovieDetailsQuery(
+    { id: movieId },
+    {
+      skip: !movieId,
+    },
+  )
 
-  const handleBackClick = async () => {
-    if (window.history.length > 1) {
-      await navigate(-1)
-    } else {
-      await navigate("/", { replace: true })
-    }
+  if (error) {
+    return "status" in error && error.status === 404 ? (
+      <div className="error">
+        Movie not found. Please check the ID or try again later.
+      </div>
+    ) : (
+      <div className="error">
+        Error fetching movie details. Please try again later.
+      </div>
+    )
   }
 
   return (
     <div>
       <div className={styles.movieCard}>
         <div className={styles.container}>
-          <button onClick={handleBackClick} className={styles.backButton}>
-            <CircleArrowLeft /> Back
-          </button>
-          {!movieDetails ? (
+          {isFetching ? (
             <div className={styles.loaderWrapper}>
               <Loader />
             </div>
           ) : (
             <>
-              {movieDetails.poster_path ? (
+              {movieDetails?.poster_path ? (
                 <img
                   src={getFullImageUrl(movieDetails.poster_path)}
                   alt={movieDetails.title}
@@ -51,7 +59,7 @@ export const MovieDetailsCard = ({ movieDetails }: MovieDetailsCardProps) => {
                 <div
                   className={styles.heroBg}
                   style={
-                    movieDetails.backdrop_path
+                    movieDetails?.backdrop_path
                       ? {
                           backgroundImage: `url("${getFullImageUrl(movieDetails.backdrop_path, "backdrop")}")`,
                         }
@@ -59,11 +67,11 @@ export const MovieDetailsCard = ({ movieDetails }: MovieDetailsCardProps) => {
                   }
                 />
                 <div className={styles.details}>
-                  <div className={styles.title1}>{movieDetails.title}</div>
+                  <div className={styles.title1}>{movieDetails?.title ?? 'Title missing'}</div>
                   <div className={styles.metaContainer}>
                     <div className={styles.metaInfo}>
                       <Calendar size={16} />
-                      {movieDetails.release_date
+                      {movieDetails?.release_date
                         ? new Date(movieDetails.release_date).getFullYear()
                         : "-"}
                     </div>
@@ -71,7 +79,7 @@ export const MovieDetailsCard = ({ movieDetails }: MovieDetailsCardProps) => {
                     <div className={styles.metaInfo}>
                       <Star size={16} />
                       <span className={styles.ratingValue}>
-                        {(movieDetails.vote_average || 0).toFixed(1)}
+                        {(movieDetails?.vote_average ?? 0).toFixed(1)}
                       </span>
                     </div>
                   </div>
@@ -80,7 +88,7 @@ export const MovieDetailsCard = ({ movieDetails }: MovieDetailsCardProps) => {
 
               <div className={styles.description}>
                 <div className={styles.column1}>
-                  {movieDetails.genres.length > 0 && (
+                  {movieDetails?.genres && movieDetails.genres.length > 0 && (
                     <div className={styles.genres}>
                       {movieDetails.genres.map(genre => (
                         <span key={genre.id} className={styles.tag}>
@@ -92,7 +100,8 @@ export const MovieDetailsCard = ({ movieDetails }: MovieDetailsCardProps) => {
                 </div>
 
                 <div className={styles.column2}>
-                  <p>{movieDetails.overview}</p>
+                  {/* eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing */}
+                  <p>{movieDetails?.overview || 'This movie has no overview.'}</p>
                 </div>
               </div>
             </>

@@ -41,7 +41,11 @@ export const SearchResults = () => {
                 : undefined
             }
           />
-          {isError && <p>Error fetching movies. Please try again later.</p>}
+          {isError && (
+            <div className="error">
+              Error fetching movies. Please try again later.
+            </div>
+          )}
         </>
       )}
     </div>
