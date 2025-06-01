@@ -3,14 +3,14 @@ import { useLazySearchMoviesQuery } from "@/store/moviesApiSlice"
 import { MovieList } from "@/components/MovieList/MovieList"
 import styles from "./SearchResults.module.scss"
 import Loader from "../Loader/Loader"
+import { selectSearchQuery } from "@/store/searchSlice"
+import { useAppSelector } from "@/store/hooks"
 
-interface SearchResultsProps {
-  searchQuery: string
-}
-
-export const SearchResults = ({ searchQuery }: SearchResultsProps) => {
+export const SearchResults = () => {
   const [searchMovies, { data, isFetching, isError }] =
     useLazySearchMoviesQuery()
+
+  const searchQuery = useAppSelector(selectSearchQuery)
 
   useEffect(() => {
     if (searchQuery.length) {

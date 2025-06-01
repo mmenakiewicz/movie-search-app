@@ -3,8 +3,9 @@ import { combineSlices, configureStore } from "@reduxjs/toolkit"
 import { setupListeners } from "@reduxjs/toolkit/query"
 import { moviesApi } from "@/store/moviesApiSlice"
 import { favoritesSlice } from "@/store/favoritesSlice"
+import { searchSlice } from "@/store/searchSlice"
 
-const rootReducer = combineSlices(moviesApi, favoritesSlice)
+const rootReducer = combineSlices(moviesApi, favoritesSlice, searchSlice)
 
 export type RootState = ReturnType<typeof rootReducer>
 

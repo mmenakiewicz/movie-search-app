@@ -1,5 +1,9 @@
 import { useAppDispatch, useAppSelector } from "@/store/hooks"
-import { addToFavorites, removeFromFavorites } from "@/store/favoritesSlice"
+import {
+  addToFavorites,
+  removeFromFavorites,
+  selectFavorites,
+} from "@/store/favoritesSlice"
 import type { Movie } from "@/types/moviesTypes"
 import styles from "./FavoriteButton.module.scss"
 import { Heart, HeartPlus } from "lucide-react"
@@ -10,7 +14,7 @@ interface FavoriteButtonProps {
 
 export const FavoriteButton: React.FC<FavoriteButtonProps> = ({ movie }) => {
   const dispatch = useAppDispatch()
-  const favorites = useAppSelector(state => state.favorites.movies)
+  const favorites = useAppSelector(selectFavorites)
   const isFavorite = favorites.some(fav => fav.id === movie.id)
 
   const toggleFavorite = () => {

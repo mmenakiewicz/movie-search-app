@@ -1,17 +1,12 @@
-import { useState } from "react"
 import SearchBar from "@/components/SearchBar/SearchBar"
 import { SearchResults } from "@/components/SearchResults/SearchResults"
-import { useDebounce } from "@/utils/useDebounce"
 
 const SearchPage = () => {
-  const [searchQuery, setSearchQuery] = useState("")
-  const debouncedSearchQuery = useDebounce(searchQuery)
-
   return (
     <div>
-      <SearchBar onSearch={setSearchQuery} />
+      <SearchBar />
       <main>
-        <SearchResults searchQuery={debouncedSearchQuery} />
+        <SearchResults />
       </main>
     </div>
   )
