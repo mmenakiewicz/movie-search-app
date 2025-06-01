@@ -23,6 +23,7 @@
   position: relative;
   width: 100%;
   max-width: 850px;
+  padding: 0 $spacing;
 }
 
 .input {
@@ -50,7 +51,7 @@
 
 .searchIcon {
   position: absolute;
-  left: $spacing;
+  left: $spacing * 2;
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;

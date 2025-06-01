@@ -1,6 +1,8 @@
 @use "sass:color";
 
 $main-width: 1200px;
+$mobile-breakpoint: 768px;
+$small-mobile-breakpoint: 480px;
 
 $main-text-color: #333;
 $hover-text-color: color.adjust($main-text-color, $lightness: 30%);

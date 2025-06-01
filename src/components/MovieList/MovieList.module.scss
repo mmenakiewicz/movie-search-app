@@ -2,12 +2,14 @@
 @use "/src/styles/_variables.scss" as *;
 
 .list {
+  $gap: $spacing * 2;
+
   display: grid;
   grid-template-columns: repeat(
     auto-fit,
-    minmax(220px, calc(25% - $spacing * 2))
+    minmax(220px, calc((100% - $gap * 3) / 4))
   );
-  gap: $spacing * 2;
+  gap: $gap;
 }
 
 .noResults {
