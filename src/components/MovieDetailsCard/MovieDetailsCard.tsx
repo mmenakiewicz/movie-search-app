@@ -67,7 +67,9 @@ export const MovieDetailsCard = ({ movieId = "" }: MovieDetailsCardProps) => {
                   }
                 />
                 <div className={styles.details}>
-                  <div className={styles.title1}>{movieDetails?.title ?? 'Title missing'}</div>
+                  <div className={styles.title1}>
+                    {movieDetails?.title ?? "Title missing"}
+                  </div>
                   <div className={styles.metaContainer}>
                     <div className={styles.metaInfo}>
                       <Calendar size={16} />
@@ -101,7 +103,9 @@ export const MovieDetailsCard = ({ movieId = "" }: MovieDetailsCardProps) => {
 
                 <div className={styles.column2}>
                   {/* eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing */}
-                  <p>{movieDetails?.overview || 'This movie has no overview.'}</p>
+                  <p>
+                    {movieDetails?.overview || "This movie has no overview."}
+                  </p>
                 </div>
               </div>
             </>
